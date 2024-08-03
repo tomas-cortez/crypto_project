@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  postgres:
+    container_name: cryptodb-postgres
+    env_file:
+      - .env
+    build: ./docker/postgres
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      READONLY_USER: ${READONLY_USER}
+      READONLY_PASSWORD: ${READONLY_PASSWORD}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "${PORT}:${PORT}"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - cryptonetwork
+    restart: always
+
+  adminer:
+    image: adminer
+    container_name: adminer
+    ports:
+      - 8080:8080
+    depends_on: 
+      postgres:
+        condition: service_healthy
+    networks:
+      - cryptonetwork
+
+networks:
+  cryptonetwork:
+    name: cryptonetwork
+
+volumes:
+  pgdata:
+    name: data_postgres

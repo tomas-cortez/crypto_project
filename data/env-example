@@ -1,0 +1,16 @@
+POSTGRES_DB=cryptodb
+
+POSTGRES_PASSWORD=pass_safe
+POSTGRES_USER=postgres
+
+READONLY_USER=readonly_user
+READONLY_PASSWORD=pass_readonly
+
+PORT=5432
+POSTGRES_HOST=localhost
+
+
+API_BASE_URL=https://api.coingecko.com/api/v3
+REQUEST_DELAY=1.2
+MAX_RETRIES=5
+CONCURRENT_REQUESTS=5

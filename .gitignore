@@ -1,0 +1,26 @@
+# Virtual environment (used to isolate project dependencies)
+venv/
+.env
+
+# Environment configuration files (often used to store sensitive data)
+.env
+
+# Extracted JSON files (a common data format)
+*.json
+
+# Log files (used to record events and errors)
+*.log
+logs/
+
+# Python bytecode cache files (generated automatically)
+__pycache__/
+*.py[cod]
+
+# Operating system configuration files (specific to macOS)
+.DS_Store
+
+# IDE configuration files (for Visual Studio Code and JetBrains IDEs)
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace

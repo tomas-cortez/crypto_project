@@ -1,0 +1,8 @@
+click
+logging
+requests
+datetime
+aiohttp
+backoff
+psycopg2
+python-dotenv
